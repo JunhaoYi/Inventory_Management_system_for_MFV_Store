@@ -40,7 +40,7 @@ public class UserViewer {
         if (usrController.registerUsr(info))
             System.out.println("success");
         else
-            System.out.println("fuck");
+            System.out.println("Register Failed");
     }
 
     public void showAllUsr() {
