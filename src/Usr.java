@@ -64,8 +64,8 @@ public class Usr {
         this.email = email;
     }
 
-    public void showUsr(){
-        System.out.println(" ID:"+getUsrId()+" Type: "+getUsrType()+" Name: "+getUsrName()+" Phone: "+getUsrPhone()+" Email: "+getEmail());
+    public void showUsr() {
+        System.out.println(" ID:" + getUsrId() + " Type: " + getUsrType() + " Name: " + getUsrName() + " Phone: " + getUsrPhone() + " Email: " + getEmail());
     }
 
 }

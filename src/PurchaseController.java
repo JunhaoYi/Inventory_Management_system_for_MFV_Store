@@ -16,14 +16,13 @@ public class PurchaseController {
 
 
     //需要改进，第二次添加东西进购物车时需要遍历车保证物品总数不大于仓库存量。
-    public boolean makeOrder(){
-        if(sc.getShoppingCar().isEmpty()){
+    public boolean makeOrder() {
+        if (sc.getShoppingCar().isEmpty()) {
             return false;
-        }
-        else{
+        } else {
             int j = ph.getPurchaseHistory().size();
-            for(ItemBatch i: sc.getShoppingCar()){
-                Order newOrder = new Order(j++, Calendar.getInstance(),i.getBatchId(),i.getBatchName(),i.getItemQuantity(),i.getPrice(),"express","userInput",sc.getCarId());
+            for (ItemBatch i : sc.getShoppingCar()) {
+                Order newOrder = new Order(j++, Calendar.getInstance(), i.getBatchId(), i.getBatchName(), i.getItemQuantity(), i.getPrice(), "express", "userInput", sc.getCarId());
                 ph.getPurchaseHistory().add(newOrder);
                 emptyShoppingCar();
             }
@@ -31,46 +30,47 @@ public class PurchaseController {
         }
     }
 
-    public void emptyShoppingCar(){
+    public void emptyShoppingCar() {
         sc.getShoppingCar().clear();
     }
 
-    public ArrayList<ItemBatch> searchItem(String userInput){
+    public ArrayList<ItemBatch> searchItem(String userInput) {
         ArrayList<ItemBatch> itemBatches = new ArrayList<>();
-        for(ItemBatch i: db.getWareHouse()){
-            if (i.getBatchName().equalsIgnoreCase(userInput)){
+        for (ItemBatch i : db.getWareHouse()) {
+            if (i.getBatchName().equalsIgnoreCase(userInput)) {
                 itemBatches.add(i);
             }
         }
         return itemBatches;
     }
 
-    public ArrayList<Order> searchOrder(int uid){
+    public ArrayList<Order> searchOrder(int uid) {
         ArrayList<Order> temp = new ArrayList<>();
-        for(Order o: ph.getPurchaseHistory()){
-            if(o.getUsrId() == uid){
-                temp.add(o);
-            }
-        }
-        return temp;
-    }
-    public ArrayList<Order> searchOrderByName(String name){
-        ArrayList<Order> temp = new ArrayList<>();
-        for(Order o: ph.getPurchaseHistory()){
-            if(o.getItemName().equals(name)){
+        for (Order o : ph.getPurchaseHistory()) {
+            if (o.getUsrId() == uid) {
                 temp.add(o);
             }
         }
         return temp;
     }
 
-    public void displayOrder(ArrayList<Order> orders){
-        for(Order o: orders){
+    public ArrayList<Order> searchOrderByName(String name) {
+        ArrayList<Order> temp = new ArrayList<>();
+        for (Order o : ph.getPurchaseHistory()) {
+            if (o.getItemName().equals(name)) {
+                temp.add(o);
+            }
+        }
+        return temp;
+    }
+
+    public void displayOrder(ArrayList<Order> orders) {
+        for (Order o : orders) {
             o.printOrder();
         }
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return usrController.getCurrentUsrId();
     }
 

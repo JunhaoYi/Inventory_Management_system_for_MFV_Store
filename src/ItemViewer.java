@@ -6,60 +6,59 @@ public class ItemViewer {
     PurchaseController purchaseController = new PurchaseController();
     Scanner console = new Scanner(System.in);
 
-    public void displayAllItem(){
+    public void displayAllItem() {
         itemController.displayAllItems();
     }
-    public void displaySearchItemByName(String input){
+
+    public void displaySearchItemByName(String input) {
         itemController.displayItems(itemController.searchItem(input));
     }
-    public void displayShoppingCar(){
+
+    public void displayShoppingCar() {
         boolean flag = true;
-        while(flag){
+        while (flag) {
             System.out.println("The shopping car shows below");
             itemController.displayItems(itemController.shoppingCar.getShoppingCar());
             System.out.println("A, Add item to your shopping car\nB, Delete item form you shopping\nC, Check out\nD, Back");
             String choose = console.nextLine();
-            switch (choose){
-                case "A":{
+            switch (choose) {
+                case "A": {
                     //addToCar(int itemBatchId, int quantity)
                     System.out.println("Which item you want to add to car? Please input its id");
                     int id = console.nextInt();
                     System.out.println("How many you want to add?");
                     int qu = console.nextInt();
-                    if (itemController.addToCar(id,qu)){
+                    if (itemController.addToCar(id, qu)) {
                         System.out.println("Success");
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("not success");
                         break;
                     }
 
                 }
-                case "B":{
+                case "B": {
                     System.out.println("Which Item you want to delete? Input Id");
                     int id = console.nextInt();
                     if (itemController.removeItem(id)) {
                         System.out.println("Success");
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("not success");
                         break;
                     }
                 }
-                case "C":{
-                    if (purchaseController.makeOrder()){
+                case "C": {
+                    if (purchaseController.makeOrder()) {
                         System.out.println("Success");
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("not success");
                         break;
                     }
                 }
-                case "D":{
-                    flag=false;
+                case "D": {
+                    flag = false;
                     break;
                 }
             }
@@ -69,7 +68,7 @@ public class ItemViewer {
     }
 
     //int batchId, String batchName, int itemQuantity, double price, int inputShelfLife, Boolean batchState, int discountRate
-    public void displayAddItem(){
+    public void displayAddItem() {
         String[] itemInfo = new String[5];
         System.out.println("Please enter item batch details");
         System.out.println("batchName");
@@ -84,13 +83,14 @@ public class ItemViewer {
         itemInfo[4] = console.nextLine();
         itemController.addItemBatch(itemInfo);
     }
-    public void displayModify(){
+
+    public void displayModify() {
         String[] itemInfo = new String[5];
         String itemName;
         int index;
         System.out.println("Enter name to search");
         itemName = console.nextLine();
-        ArrayList<ItemBatch> temp =itemController.searchItem(itemName);
+        ArrayList<ItemBatch> temp = itemController.searchItem(itemName);
         itemController.displayItems(temp);
         System.out.println("Enter the index you want to edit");
         index = Integer.parseInt(console.nextLine());
@@ -106,20 +106,14 @@ public class ItemViewer {
         itemInfo[3] = console.nextLine();
         System.out.print("discountRare");
         itemInfo[4] = console.nextLine();
-        itemController.editItem(itemInfo,itemName,index);
+        itemController.editItem(itemInfo, itemName, index);
     }
 
-    public void displayDeleteItem(){
+    public void displayDeleteItem() {
         System.out.print("Please enter itemId to remove items");
         int id = Integer.parseInt(console.nextLine());
-        itemController.deleteItemBacth(id,itemController.usrController.getCurrentUsrId());
+        itemController.deleteItemBacth(id, itemController.usrController.getCurrentUsrId());
     }
-
-
-
-
-
-
 
 
 }

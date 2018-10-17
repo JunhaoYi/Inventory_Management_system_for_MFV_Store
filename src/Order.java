@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Calendar;
 
 public class Order {
 
@@ -11,6 +11,7 @@ public class Order {
     private String shipMethod;
     private String destination;
     private int usrId;
+
     //type
     public Order(int orderId, Calendar order_date, int itemId, String itemName, int itemQuantity, Double itemPrice, String shipMethod, String destination, int usrId) {
         this.orderId = orderId;
@@ -96,9 +97,9 @@ public class Order {
         this.usrId = usrId;
     }
 
-    public void printOrder(){
-        System.out.println("order ID: "+ getOrderId()+" order Date: "+getOrder_date()+" Item ID: "+getItemId()+" Item Name: "+getItemName()+" Item Price: "+getItemPrice()+" Item Quantity:"+
-                getItemQuantity()+" Shipping Method: "+getShipMethod()+" Destination: "+ getDestination()+ "User ID: "+getUsrId());
+    public void printOrder() {
+        System.out.println("order ID: " + getOrderId() + " order Date: " + getOrder_date() + " Item ID: " + getItemId() + " Item Name: " + getItemName() + " Item Price: " + getItemPrice() + " Item Quantity:" +
+                getItemQuantity() + " Shipping Method: " + getShipMethod() + " Destination: " + getDestination() + "User ID: " + getUsrId());
     }
 
 

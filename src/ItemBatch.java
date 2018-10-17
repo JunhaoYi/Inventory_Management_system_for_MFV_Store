@@ -11,7 +11,7 @@ public class ItemBatch {
     private Boolean batchState;
     private int discountRate;
 
-    public ItemBatch (int batchId, String batchName, int itemQuantity, double price, int inputShelfLife, int discountRate) {
+    public ItemBatch(int batchId, String batchName, int itemQuantity, double price, int inputShelfLife, int discountRate) {
         this.batchId = batchId;
         this.batchName = batchName;
         this.itemQuantity = itemQuantity;
@@ -19,7 +19,7 @@ public class ItemBatch {
         this.shelfLife = inputShelfLife;
         this.supplyDate = Calendar.getInstance();
         Calendar temp = Calendar.getInstance();
-        temp.add(Calendar.DATE,inputShelfLife);
+        temp.add(Calendar.DATE, inputShelfLife);
         this.expiryDate = temp;
         this.batchState = true;
         this.discountRate = discountRate;
