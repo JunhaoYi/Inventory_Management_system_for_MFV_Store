@@ -85,13 +85,16 @@ public class UserViewer {
     }
 
     /**
-     * Display logout
+     * Display logout information
      */
     public void displayLogout() {
         usrController.logout();
         System.out.println("Successful logout");
     }
 
+    /**
+     * Display the information unregister
+     */
     public void displayUnregister() {
         System.out.println("please input which unregister user id:");
         String id = scanner.nextLine();

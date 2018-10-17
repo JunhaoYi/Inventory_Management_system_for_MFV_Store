@@ -1,16 +1,28 @@
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+/**
+ * User controller
+ * @author Fanchao
+ */
 public class UsrController {
     UsrRoll usrRoll = new UsrRoll();
-    private int currentUsrId = 0;
-    private ArrayList<Usr> usrs = usrRoll.getUsrRoll();
+    private int currentUsrId = 0;                       // Current user id
+    private ArrayList<Usr> usrs = usrRoll.getUsrRoll(); // User list of all user
 
+    /**
+     * logout function id = 0
+     * 0 is visitor
+     */
     public void logout() {
         setCurrentUsrId(0);
     }
 
-    // inputInfo is the email + password
+    /**
+     * login function
+     * @param inputInfo [0]is email [1]is user password
+     * @return
+     */
     public int login(String[] inputInfo) {
         for (Usr u : usrs) {
             if (inputInfo[0].equals(u.getEmail()) && inputInfo[1].equals(u.getPassword())) {
@@ -22,8 +34,11 @@ public class UsrController {
         return -1;
     }
 
-    // change current usr info
-    // 只能更改 电话 邮箱 和 姓名
+    /**
+     * Let user to modify their detail
+     * @param info modify information
+     * @return  whether modify successful
+     */
     public boolean editInfo(String[] info) {
         if (checkEmail(info[0]) && checkPhone(info[1]) && checkName(info[2])) {
             // Usr(int usrId, int usrType, int usrPhone, String usrName, String email, String password)
@@ -36,6 +51,11 @@ public class UsrController {
             return false;
     }
 
+    /**
+     * Register func
+     * @param regInfo the all information use for register
+     * @return        Whether register successful
+     */
     public boolean registerUsr(String[] regInfo) {
         if (checkEmail(regInfo[0]) && checkPhone(regInfo[1]) && checkName(regInfo[2]) && checkPass(regInfo[3], regInfo[4])) {
             //          Usr(int usrId, int usrType, int usrPhone, String usrName, String email, String password)
@@ -56,7 +76,12 @@ public class UsrController {
         }
     }
 
-
+    /**
+     * Unregister func
+     * @param unregisterUsrID
+     * @param checkPassword
+     * @return
+     */
     public boolean unRegisterUsr(int unregisterUsrID, String checkPassword) {
         // get current user id
         int currentUsrId = getCurrentUsrId();
@@ -96,8 +121,11 @@ public class UsrController {
         return usrs;
     }
 
-    // 第一个是邮箱 [0] 是否符合
-    //Bug,正则有问题。
+    /**
+     * check email
+     * @param email
+     * @return validation
+     */
     public boolean checkEmail(String email) {
         // 从 https://blog.csdn.net/qq1332479771/article/details/49272591 参考的正则
         if (Pattern.matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", email.trim())) {
@@ -113,7 +141,11 @@ public class UsrController {
         return true;
     }
 
-    // 电话 [1] 十位纯数字//
+    /**
+     * check phone format
+     * @param phone
+     * @return validation
+     */
     public boolean checkPhone(String phone) {
 
         if (Pattern.matches("[0-9]{10}$", phone.trim())) {
@@ -131,7 +163,11 @@ public class UsrController {
         return true;
     }
 
-    // name [2] 纯英文 可重复 无空格
+    /**
+     * check name format
+     * @param name
+     * @return validation
+     */
     public boolean checkName(String name) {
         if (Pattern.matches("[a-zA-Z]{1,15}", name.trim())) {
             return true;
@@ -140,7 +176,12 @@ public class UsrController {
         return false;
     }
 
-    // password [3] == password [4]
+    /**
+     * Check two password equal
+     * @param pass1
+     * @param pass2
+     * @return validation
+     */
     public boolean checkPass(String pass1, String pass2) {
         if (pass1.equals(pass2)) {
             return true;
@@ -150,7 +191,11 @@ public class UsrController {
     }
 
 
-    // 检查用户是否为管理员， true是管理员
+    /**
+     * Check whether administrator
+     * @param uid
+     * @return
+     */
     public boolean whetherAdm(int uid) {
         for (Usr u : usrs) {
             if (u.getUsrId() == uid && u.getUsrType() == 1)
@@ -159,7 +204,10 @@ public class UsrController {
         return false;
     }
 
-    // 生成新的user id
+    /**
+     * Create a new user id
+     * @return new id
+     */
     public int genId() {
         int temp = 1;
         for (Usr u : usrs) {
@@ -171,7 +219,11 @@ public class UsrController {
         return temp;
     }
 
-    //通过user的id获取他在list中的index
+    /**
+     * get user index by its id
+     * @param uid
+     * @return index
+     */
     public int getUsrById(int uid) {
         for (Usr u : usrs) {
             if (uid == u.getUsrId())

@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author Fanchao & Zhitao
+ */
 public class UsrRoll {
     ArrayList<Usr> usrRoll = new ArrayList<>();
 
@@ -16,6 +19,9 @@ public class UsrRoll {
         this.usrRoll = usrRoll;
     }
 
+    /**
+     * load all user form file to user roll list
+     */
     public void loadUsr() {
         ArrayList<Usr> usrList = new ArrayList<>();
         /* File file = new File("Usr.txt"); */
@@ -38,6 +44,10 @@ public class UsrRoll {
         }
     }
 
+    /**
+     * write user form memory to file
+     * @param usrr
+     */
     public void writeUsr(UsrRoll usrr) {
         try {
             File file = new File(UsrRoll.class.getResource("Usr.txt").getFile());

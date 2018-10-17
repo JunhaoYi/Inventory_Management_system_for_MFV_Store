@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * This class is the Warehouse which store all the item batches.
+ * Warehouse is use for store item info
  * @author Zhitao
  */
 public class WareHouse {
@@ -32,8 +33,10 @@ public class WareHouse {
         return -1;
     }
 
-    // load func
-
+    /**
+     * load func
+     * load item form file into memory
+     */
     public void loadWarehouse() {
         ArrayList<ItemBatch> itemList = new ArrayList<>();
         /* File file = new File("Usr.txt"); */
@@ -66,6 +69,10 @@ public class WareHouse {
         }
     }
 
+    /**
+     * write item form memory into file
+     * @param warehs
+     */
     public void writeItem(WareHouse warehs) {
         try {
             File file = new File(WareHouse.class.getResource("WareHouse.txt").getFile());
