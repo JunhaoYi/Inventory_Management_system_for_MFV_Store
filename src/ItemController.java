@@ -46,7 +46,7 @@ public class ItemController {
 
     // 只有管理员才能删除item
 
-    public void deleteItemBacth(int itemId, int currentUsrId) {
+    public void deleteItemBatch(int itemId, int currentUsrId) {
         if (usrController.whetherAdm(currentUsrId)) {
             ArrayList<ItemBatch> temp = wareHouse.getWareHouse();
             if (wareHouse.getIndexById(itemId) != -1) {

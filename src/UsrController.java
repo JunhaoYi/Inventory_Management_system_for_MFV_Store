@@ -67,7 +67,7 @@ public class UsrController {
         // 通过用户的ID获取用户在list中的index
         int unregisterUsrIndex = getUsrById(unregisterUsrID);
 
-        if ((usrs.get(getUsrById(currentUsrId)).getPassword()) == checkPassword) {
+        if ((usrs.get(getUsrById(currentUsrId)).getPassword()).equalsIgnoreCase(checkPassword)) {
             if (whetherAdm(currentUsrId) && (!whetherAdm(unregisterUsrID))) {
                 usrs.remove(unregisterUsrIndex);
                 System.out.println("Success remove user" + unregisterUsrID + "\n whose index is" + unregisterUsrIndex);
@@ -96,9 +96,10 @@ public class UsrController {
     }
 
     // 第一个是邮箱 [0] 是否符合
+    //Bug,正则有问题。
     public boolean checkEmail(String email) {
         // 从 https://blog.csdn.net/qq1332479771/article/details/49272591 参考的正则
-        if (Pattern.matches("^(\\w + ((-\\w +)|(\\.\\w +))*)\\+\\w + ((-\\w +)|(\\.\\w +))*\\@[A - Za - z0 - 9]+((\\.|-)[A - Za - z0 - 9]+)*\\.[A - Za - z0 - 9]+$", email.trim())) {
+        if (Pattern.matches("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", email.trim())) {
             for (Usr u : usrs) {
                 if (email.equalsIgnoreCase(u.getEmail())) {
                     System.out.println("Duplicate Email");
@@ -116,11 +117,13 @@ public class UsrController {
 
         if (Pattern.matches("[0-9]{10}$", phone.trim())) {
             for (Usr u : usrs) {
-                if (Integer.parseInt(phone) == u.getUsrPhone())
+                if (Integer.parseInt(phone) == u.getUsrPhone()){
                     System.out.println("Duplicate Phone");
-                return false;
+                    return false;
+                }
             }
-        } else {
+        }
+        else {
             System.out.println("Phone must be 10 number ");
             return false;
         }

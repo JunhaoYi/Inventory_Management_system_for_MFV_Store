@@ -108,11 +108,11 @@ public class ItemViewer {
         itemInfo[4] = console.nextLine();
         itemController.editItem(itemInfo, itemName, index);
     }
-
+//bug, getCurrentuid没必要，两个不是想通object。
     public void displayDeleteItem() {
-        System.out.print("Please enter itemId to remove items");
+        System.out.println("Please enter itemId to remove items");
         int id = Integer.parseInt(console.nextLine());
-        itemController.deleteItemBacth(id, itemController.usrController.getCurrentUsrId());
+        itemController.deleteItemBatch(id, 1);
     }
 
 
