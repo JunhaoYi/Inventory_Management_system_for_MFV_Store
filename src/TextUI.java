@@ -85,7 +85,7 @@ public class TextUI {
         boolean flag = true;
         while (flag) {
             System.out.println("A, look purchase history\nB, look purchase history by item name\nC, look purchase history by user id\nD, edit user information\nE, delete user\n" +
-                    "F, add item batch\nG, modify item detail\nH, delete item\nI, search item\nJ, logout");
+                    "F, add item batch\nG, modify item detail\nH, delete item\nI, search item\nJ, show all items\nK, logout");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "A": {
@@ -132,7 +132,11 @@ public class TextUI {
                     itemViewer.displaySearchItemByName(userInput);
                     break;
                 }
-                case "J": {
+                case "J":{
+                    itemViewer.displayAllItem();
+                    break;
+                }
+                case "K": {
                     userViewer.displayLogout();
                     flag = false;
                     break;

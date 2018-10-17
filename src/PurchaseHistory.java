@@ -35,7 +35,7 @@ public class PurchaseHistory {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                System.out.print(line); //查看是否load进去了
+                //System.out.print(line); //查看是否load进去了
 
                 String[] purchaseInfo = line.split(",");
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
