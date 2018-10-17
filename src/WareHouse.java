@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This class is the Warehouse which store all the item batches.
+ * @author Zhitao
+ */
 public class WareHouse {
     private ArrayList<ItemBatch> wareHouse;
 

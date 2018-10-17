@@ -28,8 +28,9 @@ public class UsrController {
         if (checkEmail(info[0]) && checkPhone(info[1]) && checkName(info[2])) {
             // Usr(int usrId, int usrType, int usrPhone, String usrName, String email, String password)
             Usr usr = new Usr(getCurrentUsrId(), 1, Integer.parseInt(info[1]), info[0], info[2], usrs.get(getUsrById(getCurrentUsrId())).getPassword());
-            usrs.set(getUsrById(getCurrentUsrId()), usr);
-            usrRoll.setUsrRoll(usrs);
+            //usrs.set(getUsrById(getCurrentUsrId()), usr);
+            usrRoll.getUsrRoll().set(getUsrById(getCurrentUsrId()),usr);
+            //usrRoll.setUsrRoll(usrs);
             return true;
         } else
             return false;
