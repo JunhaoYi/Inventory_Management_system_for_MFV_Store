@@ -1,17 +1,34 @@
 import java.util.Calendar;
 
+/**
+ * This is class is the batch of item, company buy item is batch by batch
+ * @ author  Fanchao
+ * @ Date  30/09/2018
+ *
+ */
 public class ItemBatch {
-    private int batchId;
-    private String batchName;
-    private int itemQuantity;
-    private double price;
-    private int shelfLife;
-    private Calendar supplyDate;
-    private Calendar expiryDate;
-    private Boolean batchState;
-    private int discountRate;
+    private int batchId;            //Unique item batch id
+    private String batchName;       //What kind of item
+    private int itemQuantity;       //How many item in one batch
+    private double price;           //How much for each item
+    private int shelfLife;          //How many day can item keep
+    private Calendar supplyDate;    //When does it produce
+    private Calendar expiryDate;    //When does it cannot be eaten
+    private Boolean batchState;     //Whether it is on sale
+    private int discountRate;       //Discount rate
 
+
+    /**
+     * This constructor is use when company want to add new item in sale list
+     * @param batchId
+     * @param batchName
+     * @param itemQuantity
+     * @param price
+     * @param inputShelfLife
+     * @param discountRate
+     */
     public ItemBatch(int batchId, String batchName, int itemQuantity, double price, int inputShelfLife, int discountRate) {
+
         this.batchId = batchId;
         this.batchName = batchName;
         this.itemQuantity = itemQuantity;
@@ -25,6 +42,18 @@ public class ItemBatch {
         this.discountRate = discountRate;
     }
 
+    /**
+     * This constructor is use when read content from file
+     * @param batchId
+     * @param batchName
+     * @param itemQuantity
+     * @param price
+     * @param shelfLife
+     * @param supplyDate
+     * @param expiryDate
+     * @param batchState
+     * @param discountRate
+     */
     public ItemBatch(int batchId, String batchName, int itemQuantity, double price, int shelfLife, Calendar supplyDate, Calendar expiryDate, Boolean batchState, int discountRate) {
         this.batchId = batchId;
         this.batchName = batchName;
@@ -109,6 +138,9 @@ public class ItemBatch {
         this.discountRate = discountRate;
     }
 
+    /**
+     * Print all information in a batch of item
+     */
     public void showItemBatch() {
         System.out.println("BatchId: " + getBatchId() + " batchName: " + getBatchName() + " Quantity: " + getItemQuantity() + " Price: " + getPrice() + " ShelfLife: " + getShelfLife() + " supplyDate: " + getSupplyDate()
                 + " SupplyDate: " + getSupplyDate() + " Batch State: " + getBatchState() + " DiscountRate: " + getDiscountRate());

@@ -1,10 +1,18 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * User Viewer
+ * @author Fanchao
+ */
 public class UserViewer {
     UsrController usrController = new UsrController();
     Scanner scanner = new Scanner(System.in);
 
+    /**
+     * display login information
+     * @return The user id
+     */
     public int displayLogin() {
         while (true) {
             System.out.println("Please input you email");
@@ -25,6 +33,9 @@ public class UserViewer {
         }
     }
 
+    /**
+     * display register information
+     */
     public void displayRegister() {
         System.out.println("please input your email");
         String email = scanner.nextLine();
@@ -43,18 +54,16 @@ public class UserViewer {
             System.out.println("Register Failed");
     }
 
+    /**
+     * Show all user information
+     */
     public void showAllUsr() {
         usrController.showAll();
     }
 
-    public void displayNureg() {
-        System.out.println("Please input your password");
-        String password = scanner.nextLine();
-        System.out.println("Please Input which User you want to delete");
-        int deleId = scanner.nextInt();
-        usrController.unRegisterUsr(deleId, password);
-    }
-
+    /**
+     * Show the information of edit user
+     */
     public void displayEditUsr() {
         System.out.println("Now we are going to modify your personal details");
         System.out.println("Please input you email:");
@@ -75,6 +84,9 @@ public class UserViewer {
 
     }
 
+    /**
+     * Display logout
+     */
     public void displayLogout() {
         usrController.logout();
         System.out.println("Successful logout");

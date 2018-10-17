@@ -1,19 +1,34 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * item viewer
+ * @author  Junhao
+ * @date    11/10/2018
+ */
 public class ItemViewer {
     ItemController itemController = new ItemController();
     PurchaseController purchaseController = new PurchaseController();
     Scanner console = new Scanner(System.in);
 
+    /**
+     * display all item in warehouse
+     */
     public void displayAllItem() {
         itemController.displayAllItems();
     }
 
+    /**
+     * display item by item name
+     * @param input     the name of item
+     */
     public void displaySearchItemByName(String input) {
         itemController.displayItems(itemController.searchItem(input));
     }
 
+    /**
+     * display item in the shopping cart
+     */
     public void displayShoppingCar() {
         boolean flag = true;
         while (flag) {
@@ -67,7 +82,9 @@ public class ItemViewer {
 
     }
 
-    //int batchId, String batchName, int itemQuantity, double price, int inputShelfLife, Boolean batchState, int discountRate
+    /**
+     * operation for administrator create new item
+     */
     public void displayAddItem() {
         String[] itemInfo = new String[5];
         System.out.println("Please enter item batch details");
@@ -84,6 +101,9 @@ public class ItemViewer {
         itemController.addItemBatch(itemInfo);
     }
 
+    /**
+     * operation for change the item information in warehouse
+     */
     public void displayModify() {
         String[] itemInfo = new String[5];
         String itemName;
@@ -108,7 +128,10 @@ public class ItemViewer {
         itemInfo[4] = console.nextLine();
         itemController.editItem(itemInfo, itemName, index);
     }
-//bug, getCurrentuid没必要，两个不是想通object。
+
+    /**
+     * operation for delete item
+     */
     public void displayDeleteItem() {
         System.out.println("Please enter itemId to remove items");
         int id = Integer.parseInt(console.nextLine());

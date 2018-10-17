@@ -1,11 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * The user interface
+ * @author Fanchao
+ */
+
 public class TextUI {
     Scanner scanner = new Scanner(System.in);
     UserViewer userViewer = new UserViewer();
     ItemViewer itemViewer = new ItemViewer();
     PurchaseViewer purchaseViewer = new PurchaseViewer();
 
+    /**
+     * Home page
+     */
     public void desplayHomrPage() {
         System.out.println("Welcome to MFV system");
         // itemViewer.displayItembatch()
@@ -31,7 +39,9 @@ public class TextUI {
         }
     }
 
-    // check out 在shopping car这个选项里面
+    /**
+     * Customer page
+     */
     public void customerPage() {
         boolean flag = true;
         while (flag) {
@@ -81,6 +91,9 @@ public class TextUI {
 
     }
 
+    /**
+     * Administrator page
+     */
     public void administratorPage() {
         boolean flag = true;
         while (flag) {

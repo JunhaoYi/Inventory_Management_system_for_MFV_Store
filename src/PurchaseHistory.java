@@ -1,14 +1,19 @@
-// 这个类主要就是order的集合
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Load and write, store order
+ * @author Zhitao
+ */
 public class PurchaseHistory {
     private ArrayList<Order> purchaseHistory;
 
+    /**
+     * constructor
+     */
     public PurchaseHistory() {
         loadPH();
     }
@@ -25,7 +30,9 @@ public class PurchaseHistory {
         this.purchaseHistory = purchaseHistory;
     }
 
-    //int orderId, Calendar order_date, int itemId, String itemName, int itemQuantity, Double itemPrice, String shipMethod, String destination, Calendar post_date, int usrId
+    /**
+     * Load order form file
+     */
 
     public void loadPH() {
         ArrayList<Order> ph = new ArrayList<>();
@@ -52,6 +59,10 @@ public class PurchaseHistory {
         }
     }
 
+    /**
+     * write order into file
+     * @param purchaseHistory purchase history
+     */
     public void writePH(PurchaseHistory purchaseHistory) {
         try {
             File file = new File(PurchaseHistory.class.getResource("PurchaseHistory.txt").getFile());

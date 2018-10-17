@@ -1,18 +1,34 @@
 import java.util.Calendar;
 
+/**
+ * The order object
+ * @author Fanchao
+ */
+
 public class Order {
 
-    private int orderId;
-    private Calendar order_date;
-    private int itemId;
-    private String itemName;
-    private int itemQuantity;
-    private Double itemPrice;
-    private String shipMethod;
-    private String destination;
-    private int usrId;
+    private int orderId;        //The order id
+    private Calendar order_date;//The order create date
+    private int itemId;         //The item id
+    private String itemName;    //The item name
+    private int itemQuantity;   //The quantity of this batch
+    private Double itemPrice;   //The price of item
+    private String shipMethod;  //The ship method
+    private String destination; //Where to delivery
+    private int usrId;          //Belong to which user
 
-    //type
+    /**
+     *
+     * @param orderId
+     * @param order_date
+     * @param itemId
+     * @param itemName
+     * @param itemQuantity
+     * @param itemPrice
+     * @param shipMethod
+     * @param destination
+     * @param usrId
+     */
     public Order(int orderId, Calendar order_date, int itemId, String itemName, int itemQuantity, Double itemPrice, String shipMethod, String destination, int usrId) {
         this.orderId = orderId;
         this.order_date = Calendar.getInstance();
@@ -97,6 +113,9 @@ public class Order {
         this.usrId = usrId;
     }
 
+    /**
+     * print the order info
+     */
     public void printOrder() {
         System.out.println("order ID: " + getOrderId() + " order Date: " + getOrder_date() + " Item ID: " + getItemId() + " Item Name: " + getItemName() + " Item Price: " + getItemPrice() + " Item Quantity:" +
                 getItemQuantity() + " Shipping Method: " + getShipMethod() + " Destination: " + getDestination() + "User ID: " + getUsrId());
